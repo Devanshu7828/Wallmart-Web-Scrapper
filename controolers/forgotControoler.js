@@ -39,7 +39,6 @@ const forgotPassword = async (req, res, next) => {
       .send(msg)
       .then(() => {
         req.flash("success", "Email sent succesfully");
-        console.log('email sent');
         res.redirect("/forgot");
       })
       .catch((error) => {

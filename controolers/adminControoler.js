@@ -68,10 +68,9 @@ const scrapeDataFromWebsite = async (req, res, next) => {
   try {
     const url = req.query.search;
     if (url) {
-      browser = await pupperter.launch({ headless: false });
+      browser = await pupperter.launch({ args: ['--no-sandbox'] });
       const page = await browser.newPage();
       let result = await scrapeData(url, page);
-      console.log(result);
       let productData = {
         title: result.title,
         price: "$" + result.price,
@@ -90,7 +89,6 @@ const scrapeDataFromWebsite = async (req, res, next) => {
       res.render("admin/newproduct", { prdoduct: productData });
     }
   } catch (error) {
-    console.log(error);
     req.flash("error", "ERROR" + error);
     return res.redirect("/product/new");
   }
@@ -128,7 +126,6 @@ const searchProductsPage = async (req, res) => {
     const sku = req.query.sku;
     // check sku present in database
     const product = await Poducts.findOne({ sku: sku });
-    console.log(product);
     if (!product) {
       req.flash("error", "No product found with this sku");
       return res.render("admin/search", { prdoduct: "" });
@@ -136,7 +133,6 @@ const searchProductsPage = async (req, res) => {
 
     return res.render("admin/search", { prdoduct: product });
   } catch (error) {
-    console.log(error);
     req.flash("error", "ERROR" + error);
     res.render("admin/search", { prdoduct: "" });
   }
@@ -145,7 +141,6 @@ const searchProductsPage = async (req, res) => {
 const instock = async (req, res) => {
   try {
     const products = await Poducts.find({ newStock: "In Stock" });
-    console.log(products);
 
     if (!products) {
       req.flash("error", "No products");
@@ -153,7 +148,6 @@ const instock = async (req, res) => {
     }
     return res.render("admin/instock", { prdoduct: products });
   } catch (error) {
-    console.log(error);
     req.flash("error", "ERROR" + error);
     res.render("admin/instock", { prdoduct: "" });
   }
@@ -192,7 +186,6 @@ const outOfStock = async (req, res) => {
 const priceChanged = async (req, res) => {
   try {
     const product = await Poducts.find();
-    console.log(product);
     if (!product) {
       req.flash("error", "No products");
       return res.render("admin/pricechanged", { prdoduct: "" });
@@ -254,7 +247,6 @@ const updatedProduct = async (req, res) => {
 const NotupdatedProduct = async (req, res) => {
   try {
     const product = await Poducts.find({ updateStatus: "Not Updated" });
-    console.log(product);
     if (!product) {
       req.flash("error", "No Updated Product");
       return res.render("admin/notupdatedproducts", { products: "" });
@@ -293,7 +285,7 @@ const Postupdate = async (req, res) => {
         ).then((products) => {});
       }
 
-      browser = await pupperter.launch({ headless: false });
+      browser = await pupperter.launch({ args: ['--no-sandbox'] });
       const page = await browser.newPage();
       for (let i = 0; i < products.length; i++) {
         let result = await scrapeData(products[i].url, page);

@@ -2,7 +2,6 @@ const User = require("../models/UserModel");
 const passport = require("passport");
 const bcrypt = require("bcrypt");
 const registerUser = async (req, res) => {
-  console.log(req.body);
   try {
     const { name, email, password } = req.body;
 
