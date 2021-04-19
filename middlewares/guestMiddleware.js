@@ -9,7 +9,7 @@ function isAuthenticated(req, res, next) {
   if (req.isAuthenticated()) {
     return next();
   }
-  req.flash("error", "Please Login first to access this route");
+  req.flash("error", "Please Login first.");
   return res.redirect("/login");
 }
 

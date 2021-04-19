@@ -3,11 +3,7 @@
 <div class="col-9">
     <div class="container p-3 w-100">
         <h1 class="mt-5 mb-4">Search Product</h1>
-        <% if (messages.error) { %>
-            <div class="alert alert-danger p-0 error text-center" role="alert">
-                <h4 class="fs-6"> <%= messages.error %> </h4>
-              </div>
-        <% } %>
+        <%- include('../partials/messages') -%>
         <form class="mt-2" id="newpostform" action="/product/search" method="GET">
             <div class="row mt-5 justify-content-center d-flex">
                 <div class="col-6">

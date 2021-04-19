@@ -213,6 +213,12 @@ const backinstock = async (req, res) => {
   }
 };
 
+// index page
+const indexPage = async (req, res) => {
+  res.render('admin/index')
+}
+
+
 // dashboard
 const dashboardPage = async (req, res) => {
   try {
@@ -326,4 +332,5 @@ module.exports = {
   NotupdatedProduct,
   update,
   Postupdate,
+  indexPage
 };

@@ -27,7 +27,7 @@ const forgotPassword = async (req, res, next) => {
       from: "devanshurajak23@gmail.com", // Change to your verified sender
       subject: "Recovery Email",
       text:
-        "Please click to revoer your password:\n\n" +
+        "Please click to recover your password:\n\n" +
         "http://" +
         req.headers.host +
         "/reset/" +

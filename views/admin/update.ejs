@@ -2,15 +2,8 @@
 <div class="col-9">
   <div class="container p-3 w-100">
     <h1 class="mt-5 mb-4">Update Products</h1>
-    <% if (messages.error) { %>
-    <div class="alert alert-danger p-0 error text-center" role="alert">
-      <h4 class="fs-6"><%= messages.error %></h4>
-    </div>
-    <% } %> <% if (messages.success) { %>
-    <div class="alert alert-success p-0 error text-center" role="alert">
-      <h4 class="fs-6"><%= messages.success %></h4>
-    </div>
-    <% } %> <% if(message != '' && message.includes("update started")) { %>
+    <%- include('../partials/messages') -%>
+     <% if(message != '' && message.includes("update started")) { %>
     <div class="alert alert-success" role="alert">
       <b
         >Updated Started Successfully. Please read the following

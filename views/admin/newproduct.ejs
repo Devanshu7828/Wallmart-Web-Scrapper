@@ -3,16 +3,7 @@
 <div class="col-9">
     <div class="container p-3 w-100">
         <h1 class="mt-5 mb-4">Add New Product</h1>
-        <% if (messages.error) { %>
-            <div class="alert alert-danger p-0 error text-center" role="alert">
-                <h4 class="fs-6"> <%= messages.error %> </h4>
-              </div>
-        <% } %>
-        <% if (messages.success) { %>
-            <div class="alert alert-success p-0 error text-center" role="alert">
-                <h4 class="fs-6"> <%= messages.success %> </h4>
-              </div>
-        <% } %>
+        <%- include('../partials/messages') -%>
         <form class="mt-2" id="newpostform" action="/fetch/data" method="GET">
 
             <div class="row mt-5 justify-content-center d-flex">

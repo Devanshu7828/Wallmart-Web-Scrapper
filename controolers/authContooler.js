@@ -46,7 +46,7 @@ const loginUser = async (req, res, next) => {
         req.flash("error", info.message);
       }
 
-      return res.redirect("/");
+      return res.redirect("/dashboard");
     });
   })(req, res, next);
 };

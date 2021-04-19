@@ -8,10 +8,10 @@ const {guest,isAuthenticated} = require("../middlewares/guestMiddleware");
 // Page routes
 // router.get("/", pageController.dashboardsPage);
 router.get("/login",guest, pageController.loginPage);
-router.get("/register", pageController.registerPage);
+router.get("/register",guest, pageController.registerPage);
 router.get("/password/change", isAuthenticated,pageController.changePasswordPage);
-router.get("/forgot", isAuthenticated,pageController.forgotPasswordPage);
-router.get("/forgot", isAuthenticated,pageController.forgotPasswordPage);
+router.get("/forgot",pageController.forgotPasswordPage);
+// router.get("/forgot",pageController.forgotPasswordPage);
 router.get("/allusers", isAuthenticated,pageController.allusersPage);
 router.get("/edit/:id", isAuthenticated,pageController.editPage);
 // updateUser

@@ -5,7 +5,8 @@ const {guest,isAuthenticated} = require("../middlewares/guestMiddleware");
 const adminController = require("../controolers/adminControoler");
 // page
 // dashboard
-router.get("/", isAuthenticated, adminController.dashboardPage);
+router.get("/",adminController.indexPage);
+router.get("/dashboard", isAuthenticated, adminController.dashboardPage);
 router.get("/product/new", isAuthenticated, pageController.newProductsPage);
 router.get("/product/search", isAuthenticated, adminController.searchProductsPage);
 router.get("/products/instock", isAuthenticated, adminController.instock);
