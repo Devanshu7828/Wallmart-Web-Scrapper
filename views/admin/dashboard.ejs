@@ -18,16 +18,16 @@
         <% products.forEach((product) => { %>
         <% total++; %>
         
-        <% if(product.newStock === 'In Stock') { %>
+        <% if(product.newStock === 'In Stock ') { %>
         <%    instock++; %>
         <% } %>
-        <% if(product.newStock === 'Out of stock') { %>
+        <% if(product.newStock === 'Out of stock ') { %>
         <%    outofstock++; %>
         <% } %>
         <% if(product.newPrice !== product.oldPrice) { %>
         <%    pricechanged++; %>
         <% } %>
-        <% if(product.oldStock === 'Out of stock' && product.newStock === 'In Stock') { %>
+        <% if(product.oldStock === 'Out of stock ' && product.newStock === 'In Stock ') { %>
         <%   backinstock++; %>
         <% } %>
         <% if(product.updateStatus === 'Updated') { %>

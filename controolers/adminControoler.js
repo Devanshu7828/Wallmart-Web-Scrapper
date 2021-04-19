@@ -68,7 +68,8 @@ const scrapeDataFromWebsite = async (req, res, next) => {
   try {
     const url = req.query.search;
     if (url) {
-      browser = await pupperter.launch({ args: ['--no-sandbox'] });
+      browser = await pupperter.launch({ headless: false });
+      // browser = await pupperter.launch({ args: ['--no-sandbox'] });
       const page = await browser.newPage();
       let result = await scrapeData(url, page);
       let productData = {
@@ -140,8 +141,8 @@ const searchProductsPage = async (req, res) => {
 
 const instock = async (req, res) => {
   try {
-    const products = await Poducts.find({ newStock: "In Stock" });
-
+    const products = await Poducts.find({ newStock: "In Stock " });
+    console.log(products);
     if (!products) {
       req.flash("error", "No products");
       return res.render("admin/instock", { prdoduct: "" });
@@ -168,18 +169,16 @@ const deleteProduct = async (req, res) => {
 
 const outOfStock = async (req, res) => {
   try {
-    const products = await Poducts.find({ newStock: "Out of stock" });
-    console.log(products);
-    // console.log(products);
+    const products = await Poducts.find({ newStock: "Out of stock " });
     if (!products) {
       req.flash("error", "No products");
-      return res.render("admin/outOfStock", { prdoduct: "" });
+      return res.render("admin/outfStock", { prdoduct: "" });
     }
-    return res.render("admin/outOfStock", { prdoduct: products });
+    return res.render("admin/outofStock", { prdoduct: products });
   } catch (error) {
     console.log(error);
     req.flash("error", "ERROR" + error);
-    res.render("admin/outOfStock", { prdoduct: "" });
+    res.render("admin/outofStock", { prdoduct: "" });
   }
 };
 
@@ -285,7 +284,7 @@ const Postupdate = async (req, res) => {
         ).then((products) => {});
       }
 
-      browser = await pupperter.launch({ args: ['--no-sandbox'] });
+      browser = await pupperter.launch({ headless: false });
       const page = await browser.newPage();
       for (let i = 0; i < products.length; i++) {
         let result = await scrapeData(products[i].url, page);
