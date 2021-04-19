@@ -1,0 +1,31 @@
+<%- include('../partials/header') -%>
+<div class="container">
+
+    <h1 class="text-center mt-5 mb-3">Forgot Password</h1>
+    <% if (messages.error) { %>
+        <div class="alert alert-danger p-0 error text-center" role="alert">
+            <h4 class="fs-6"> <%= messages.error %> </h4>
+          </div>
+    <% } %>
+    <% if (messages.success) { %>
+        <div class="alert alert-success p-0 error text-center" role="alert">
+            <h4 class="fs-6"> <%= messages.success %> </h4>
+          </div>
+    <% } %>
+<div class="container w-25">
+   
+    <form action="/forgot" method="POST">
+
+        <div class="form-group px-0">
+            <input type="email" name="email" class="form-control" placeholder="Enter Email Address">
+        </div>
+        <button type="submit" class="btn btn-danger btn-block">Send Email</button>
+    </form>
+    <a class="float-right" href="/login">Back to Login</a>
+</div>
+
+
+</div>
+</div>
+
+<%- include('../partials/footer') -%>

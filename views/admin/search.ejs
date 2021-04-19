@@ -1,0 +1,35 @@
+<%- include('../partials/header') -%>
+
+<div class="col-9">
+    <div class="container p-3 w-100">
+        <h1 class="mt-5 mb-4">Search Product</h1>
+        <% if (messages.error) { %>
+            <div class="alert alert-danger p-0 error text-center" role="alert">
+                <h4 class="fs-6"> <%= messages.error %> </h4>
+              </div>
+        <% } %>
+        <form class="mt-2" id="newpostform" action="/product/search" method="GET">
+            <div class="row mt-5 justify-content-center d-flex">
+                <div class="col-6">
+                    <input type="text" class="form-control" name="sku" placeholder="Enter Product SKU" required>
+                </div>
+            </div>
+
+            <div class="justify-content-center d-flex mt-4">
+                <button id="fetchBtn" class="btn btn-danger w-25 py-2">Search Product</button>
+            </div>
+        </form>
+
+        <div class=" ml-5 text-left mt-5">
+            <span>Title: </span> <span><%= prdoduct.title%></span><br>
+            <span>Price: </span> <span><%= prdoduct.newPrice%></span><br>
+            <span>Stock: </span> <span><%= prdoduct.newStock%></span><br>
+            <span>SKU: </span> <span><%= prdoduct.sku%></span>
+        </div>
+
+    </div>
+</div>
+</div>
+
+
+<%- include('../partials/footer') -%>
