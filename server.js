@@ -69,7 +69,7 @@ app.use('*', (req, res) => {
   res.render('admin/notfound')
 })
 
-
+// listen port
 app.listen(port, () => {
   console.log(`server is up on port ${port}`);
 });
