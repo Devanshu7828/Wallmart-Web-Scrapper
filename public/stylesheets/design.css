@@ -1,7 +1,4 @@
-html {
-  overflow-x: hidden;
-  overflow-y: hidden;
-}
+
 #fetchBtn,
 #publishBtn {
   border-radius: 2rem;
