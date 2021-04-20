@@ -68,7 +68,7 @@ const scrapeDataFromWebsite = async (req, res, next) => {
   try {
     const url = req.query.search;
     if (url) {
-      browser = await pupperter.launch({ headless: false });
+      browser = await pupperter.launch({ args: ['--no-sandbox'] });
       // browser = await pupperter.launch({ args: ['--no-sandbox'] });
       const page = await browser.newPage();
       let result = await scrapeData(url, page);
@@ -290,7 +290,7 @@ const Postupdate = async (req, res) => {
         ).then((products) => {});
       }
 
-      browser = await pupperter.launch({ headless: false });
+      browser = await pupperter.launch({ args: ['--no-sandbox'] });
       const page = await browser.newPage();
       for (let i = 0; i < products.length; i++) {
         let result = await scrapeData(products[i].url, page);
